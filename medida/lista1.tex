@@ -1,0 +1,133 @@
+\documentclass[12pt, a4paper]{article}
+
+% --- Margins & Layout ---
+\usepackage[margin=1in, headheight=15pt]{geometry}
+
+% --- Micro-Typography Adjustments ---
+\usepackage{microtype} % Handles character protrusion and font expansion automatically
+\usepackage[brazilian]{babel}
+
+% --- Math & Symbols ---
+\usepackage{amsmath, amssymb, amsthm}
+
+% --- Built-in Header/Footer Control (No fancyhdr needed) ---
+% Uses standard LaTeX page styles or lightweight native commands
+\pagestyle{myheadings}
+\markright{Pedro Barros \quad|\quad Introdução à Medida e Integração \quad|\quad Funções Mensuráveis}
+
+% --- Custom Math Environments ---
+\newenvironment{solution}[1]{\par\vspace{1.2em}\noindent\textbf{Questão #1.}}{\par\vspace{0.5em}}
+
+% --- Optional Math Shortcuts ---
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\salg}{$\sigma$-álgebra }
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\vp}{\varphi}
+
+\begin{document}
+
+% --- Title Block ---
+\thispagestyle{empty} % Hides headers on the first page
+\begin{center}
+    {\Large \textbf{Introdução à Medida e Integração}} \\[0.4em]
+    {\large Funções Mensuráveis} \\[0.4em]
+    \textbf{Nome:} Pedro Barros \quad | \quad \textbf{Data:} \today
+\end{center}
+
+\hrule
+\vspace{1.5em}
+
+% --- Content ---
+\begin{solution}{1}
+Se $f$ é mensurável, então $[f > \alpha]$ é mensurável para todo $\alpha \in \mathbb{R}$. Portanto, $[f > \alpha] \in \mathcal{A}$ para todo $\alpha \in \mathbb{Q}$. Reciprocamente, se $[f>\alpha]$ para todo $\alpha \in \mathcal{A}$, então seja $\beta \in \R$ um real qualquer. Temos que, como $\R$ é completo, então há uma sequência racional $(q_n)_{n\in \N} \subseteq \R$ não-crescente que converge para $\beta$. Então:
+\[[f>\beta] = \bigcup_{i=1}^\infty [f>q_n]\]
+Que é união enumerável de conjuntos pertencentes a $\sigma$-álgebra $\mathcal{A}$, logo $[f>\beta]\in \mathcal{A}$ é mensurável. Portanto, $f$ é mensurável.
+
+\end{solution}
+
+\begin{solution}{2}
+    Primeiro provaremos que o conjunto $\A_f = \{E\subseteq \R : f^{-1}(E) \in \A\}$ é uma \salg. De fato, ela cumpre os axiomas:
+
+    \textit{1. Contém o conjunto vazio.}
+    $f^{-1} (\emptyset) = \emptyset \in \A$, logo $E \in \A_f$.
+
+    \textit{2. Se $E\in \A_f$, então $Y - E \in \A_f$.} Temos que $f^{-1}(Y-E) = X - f^{-1} (E)$. Como $E \in \A_f$, $f^{-1} (E)\in \A$ e $X - f^{-1} (E) \in \A$. Logo $f^{-1}(Y-E) \in \A$ e $Y-E \in \A_f$.
+
+    \textit{3. Se $E_n \in \A_f$ é uma família enumerável de conjuntos de conjuntos em$\A_f$, então $\bigcup^\infty E_n \in \A_f$.} Como $E_n \in \A_f$, então $f^{-1}(E_n) \in \A$. Logo, $f^{-1}(\bigcup^\infty E_n) = \bigcup^\infty f^{-1}(E_n) \in \A$ e $\bigcup^\infty E_n \in \A_f$. 
+
+    Como $\A_f$ satisfaz os três axiomas, então $\A_f$ é uma \salg. Para provar a equivalencia, separamos as duas implicações:
+
+    ($\Rightarrow$) Se $f$ é mensurável, então $[f > \alpha] = f^{-1}((\alpha, +\infty)) \in \A$ para todo $\alpha \in \R$. Então, $(\alpha, +\infty) \in \A_f$ para todo $\alpha \in \R$. Como $\A_f$ é uma \salg, ela contém a \salg de Borel $\B(\R)$, pois $\B(\R)$ é a menor \salg  que contém todos os intervalos abertos $(\alpha, +\infty)$. Assim, $E \in \B(\R) \Rightarrow E \in \A_f$ e $f^{-1}(E) \in \A$ para todo $E \in \B(\R)$.
+
+    ($\Leftarrow$) Obviamente, se $f^{-1}(E) \in \A$ para todo $E \in \B(\R)$, então $[f > \alpha] = f^{-1}((\alpha,\allowbreak +\infty)) \in \A$ para todo $\alpha \in \R$. Logo, $f$ é mensurável.    
+\end{solution}
+
+\begin{solution}{3}
+    Seja $E \notin \A$ e $f$ a função definida por casos:
+    \[
+        f(x) = 
+        \begin{cases}
+            1, & \text{se } x \in {E} \\
+            -1, & \text{se } x \in X \setminus E
+        \end{cases}    
+    \]
+    Se $E \in \A$, então $[f > 0] = E \notin \A$, logo $f$ não é mensurável. Mas $f^2 = |f| = 1$ é mensurável, pois $[f^2 > \alpha] = [|f| > \alpha]= X \in \A$. Portanto, $f^2$ e $|f|$ são mensuráveis, mas $f$ não é.
+\end{solution}
+\begin{solution}{4}
+    Se $h(x) = \max\{f(x), g(x)\}$, então $h$ é mensurável. De fato, temos que:
+    \[
+        [h > \alpha] = [\max\{f, g\} > \alpha] = [f > \alpha] \cup [g > \alpha]
+    \]
+    A prova da igualdade acima pode ser separada em duas inclusões.
+    
+    ($\subseteq$): Primeiro, se $x \in [h > \alpha]$, então $\max\{f(x), g(x)\} > \alpha$. Logo, $f(x) > \alpha$ ou $g(x) > \alpha$, o que implica que $x \in [f > \alpha]$ ou $x \in [g > \alpha]$. Portanto, $x \in [f > \alpha] \cup [g > \alpha]$ e temos a primeira inclusão.
+
+    ($\supseteq$): Agora, se $x \in [f > \alpha] \cup [g > \alpha]$, então $f(x) > \alpha$ ou $g(x) > \alpha$. Sem perda de generalidade, podemos assumir $f(x) > \alpha$. Então, $\max\{f(x), g(x)\} > f(x) > \alpha$, o que implica que $x \in [h > \alpha]$. Portanto, temos a segunda inclusão.
+
+    Como $[f > \alpha]$ e $[g > \alpha] \in \A$, então $[h > \alpha]\in \A$  para todo $\alpha \in \R$. Logo, $h$ é mensurável.
+    A prova para $h(x) = \min\{f(x), g(x)\}$ é análoga, pois:
+    \[
+        [h > \alpha] = [\min\{f, g\} > \alpha] = [f > \alpha] \cap [g > \alpha]
+    \]
+\end{solution}
+
+\begin{solution}{5}
+    Se $h(x)$ é definida pelos casos (nos quais $f$ e $g$ são mensuráveis):
+    \[
+        h(x) = 
+        \begin{cases}
+            f(x), & \text{se } x \in E \\
+            g(x), & \text{se } x \in X \setminus E
+        \end{cases}
+    \]
+    Então, $h$ é mensurável. De fato, temos que, se $\alpha \in \R$:
+    \[
+        [h > \alpha] = ([f > \alpha] \cap E) \cup ([g > \alpha] \cap (X \setminus E))
+    \]
+    A prova da igualdade acima pode ser separada em duas inclusões. 
+
+    ($\subseteq$): Primeiro, se $x \in [h > \alpha]$, então $h(x) > \alpha$. Se $x \in E$, então $f(x) = h(x) > \alpha$, logo $x \in [f > \alpha] \cap E$. Se $x \in X \setminus E$, então $g(x) = h(x) > \alpha$, logo $x \in [g > \alpha] \cap (X \setminus E)$. Portanto, $x$ pertence à união dos dois conjuntos, o que prova a primeira inclusão.
+
+    ($\supseteq$): Agora, se $x \in [f > \alpha] \cap E$, então $f(x) > \alpha$ e $x \in E$, o que implica que $h(x) = f(x) > \alpha$, logo $x \in [h > \alpha]$. De forma análoga, se $x \in [g > \alpha] \cap (X \setminus E)$, então $g(x) > \alpha$ e $x \in X \setminus E$, o que implica que $h(x) = g(x) > \alpha$, logo $x \in [h > \alpha]$. Portanto, temos a segunda inclusão.
+\end{solution}
+
+\begin{solution}{6}
+    Se $f: X \to \R$ é mensurável e $\varphi: \R \to \R$ é contínua, então temos o conjunto 
+\[
+    [\varphi \circ f > \alpha] = \{x \in X : \varphi(f(x)) > \alpha\} = f^{-1}(\varphi^{-1}((\alpha, +\infty)))
+\]
+Como $\varphi$ é contínua, então $\varphi^{-1}((\alpha, +\infty))$ é um conjunto aberto de $\R$, logo $\varphi^{-1}((\alpha, +\infty)) \in \B(\R)$. Como $f$ é mensurável, então $f^{-1}(\varphi^{-1}((\alpha, +\infty))) \in \A$. Portanto, $[\varphi \circ f > \alpha] \in \A$ para todo $\alpha \in \R$, o que implica que $\varphi \circ f$ é mensurável.
+\end{solution}
+
+\begin{solution}{7}
+    Se $f: X \to \R$ e $\varphi: \R \to \R$ são funções mensuráveis, então $\varphi \circ f$ é mensurável. De fato, temos que:
+\[
+    [\varphi \circ f > \alpha] = \{x \in X : \varphi(f(x)) > \alpha\} = f^{-1}(\varphi^{-1}((\alpha, +\infty))) 
+\]
+Como $\varphi$ é mensurável, então $\varphi^{-1}((\alpha, +\infty)) \in \B(\R)$. Como $f$ é mensurável, então $f^{-1}(\varphi^{-1}((\alpha, +\infty))) \in \A$. Portanto, $[\varphi \circ f > \alpha] \in \A$ para todo $\alpha \in \R$, o que implica que $\varphi \circ f$ é mensurável.
+\end{solution}
+
+\end{document}

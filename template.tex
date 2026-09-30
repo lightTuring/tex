@@ -1,0 +1,48 @@
+\documentclass[12pt, a4paper]{article}
+
+% --- Margins & Layout ---
+\usepackage[margin=1in, headheight=15pt]{geometry}
+
+% --- Micro-Typography Adjustments ---
+\usepackage{microtype} % Handles character protrusion and font expansion automatically
+\usepackage[brazilian]{babel}
+
+% --- Math & Symbols ---
+\usepackage{amsmath, amssymb, amsthm}
+
+% --- Built-in Header/Footer Control (No fancyhdr needed) ---
+% Uses standard LaTeX page styles or lightweight native commands
+\pagestyle{myheadings}
+\markright{Pedro Barros \quad|\quad Introdução à Medida e Integração \quad|\quad Funções Mensuráveis}
+
+% --- Custom Math Environments ---
+\newenvironment{solution}[1]{\par\vspace{1.2em}\noindent\textbf{Questão #1.}}{\par\vspace{0.5em}}
+
+% --- Optional Math Shortcuts ---
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\salg}{$\sigma$-álgebra }
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\vp}{\varphi}
+
+\begin{document}
+
+% --- Title Block ---
+\thispagestyle{empty} % Hides headers on the first page
+\begin{center}
+    {\Large \textbf{Introdução à Medida e Integração}} \\[0.4em]
+    {\large Funções Mensuráveis} \\[0.4em]
+    \textbf{Nome:} Pedro Barros \quad | \quad \textbf{Data:} \today
+\end{center}
+
+\hrule
+\vspace{1.5em}
+
+% --- Content ---
+\begin{solution}{1}
+
+\end{solution}
+
+\end{document}

@@ -1,0 +1,72 @@
+\documentclass[12pt, a4paper]{article}
+
+% --- Margins & Layout ---
+\usepackage[margin=1in, headheight=15pt]{geometry}
+
+% --- Micro-Typography Adjustments ---
+\usepackage{microtype} % Handles character protrusion and font expansion automatically
+\usepackage[brazilian]{babel}
+
+% --- Math & Symbols ---
+\usepackage{amsmath, amssymb, amsthm}
+
+% --- Built-in Header/Footer Control (No fancyhdr needed) ---
+% Uses standard LaTeX page styles or lightweight native commands
+\pagestyle{myheadings}
+\markright{\scriptsize Pedro Barros \quad|\quad Medida e Integração \quad|\quad Sigma-álgebra e Medidas}
+
+% --- Custom Math Environments ---
+\newenvironment{solution}[1]{\par\vspace{1.2em}\noindent\textbf{Questão #1.}}{\par\vspace{0.5em}}
+
+% --- Optional Math Shortcuts ---
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\salg}{$\sigma$-álgebra }
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\vp}{\varphi}
+
+\begin{document}
+
+% --- Title Block ---
+\thispagestyle{empty} % Hides headers on the first page
+\begin{center}
+    {\Large \textbf{Introdução à Medida e Integração}} \\[0.4em]
+    {\large Sigma-álgebra e Medidas} \\[0.4em]
+    \textbf{Nome:} Pedro Barros \quad | \quad \textbf{Data:} \today
+\end{center}
+
+\hrule
+\vspace{1.5em}
+
+% --- Content ---
+\begin{solution}{1}
+    Seja $\lambda(E)=\mu(A\cap E)$, para todo $E\in\mathcal{A}$. Verifiquemos que $\lambda$ é uma medida.
+
+    \textbf{Axioma 1:} Como $A\cap\varnothing=\varnothing$,
+    \[
+        \lambda(\varnothing)=\mu(A\cap\varnothing)=\mu(\varnothing)=0.
+    \]
+
+    \textbf{Axioma 2:} Para todo $E\in\mathcal{A}$, temos $A\cap E\in\mathcal{A}$. Logo,
+    \[
+        \lambda(E)=\mu(A\cap E)\geq 0.
+    \]
+
+    \textbf{Axioma 3:} Se $(E_n)_{n\geq1}\subseteq\mathcal{A}$ é uma família dois a dois disjunta, então os conjuntos $A\cap E_n$ também são dois a dois disjuntos e
+    \[
+        A\cap\biggl(\bigcup_{n=1}^{\infty}E_n\biggr)
+        =\bigcup_{n=1}^{\infty}(A\cap E_n).
+    \]
+    Pela $\sigma$-aditividade de $\mu$,
+    \[
+        \lambda\biggl(\bigcup_{n=1}^{\infty}E_n\biggr)
+        =\mu\biggl(A\cap\bigcup_{n=1}^{\infty}E_n\biggr)
+        =\sum_{n=1}^{\infty}\mu(A\cap E_n)
+        =\sum_{n=1}^{\infty}\lambda(E_n).
+    \]
+    Portanto, $\lambda$ é uma medida em $(X,\mathcal{A})$.
+\end{solution}
+
+\end{document}
