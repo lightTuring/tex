@@ -1,0 +1,62 @@
+\documentclass[12pt, a4paper]{article}
+
+% --- Margins & Layout ---
+\usepackage[margin=1in, headheight=15pt]{geometry}
+
+% --- Micro-Typography Adjustments ---
+\usepackage{microtype} % Handles character protrusion and font expansion automatically
+\usepackage[brazilian]{babel}
+
+% --- Math & Symbols ---
+\usepackage{amsmath, amssymb, amsthm}
+
+
+% --- Built-in Header/Footer Control (No fancyhdr needed) ---
+% Uses standard LaTeX page styles or lightweight native commands
+\pagestyle{myheadings}
+\markright{Pedro Barros \quad|\quad Geometria e Topologia \quad|\quad Segunda Unidade}
+
+% --- Custom Math Environments ---
+\newenvironment{problem}[1]{\par\vspace{1.2em}\noindent\textbf{Questão #1.}}{\par\vspace{0.5em}}
+\newenvironment{solution}{\par\vspace{1.2em}\noindent\textbf{Solução:}}{\par\vspace{0.5em}}
+
+% --- Optional Math Shortcuts ---
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\salg}{$\sigma$-álgebra }
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\vp}{\varphi}
+
+\begin{document}
+
+% --- Title Block ---
+\thispagestyle{empty} % Hides headers on the first page
+\begin{center}
+    {\Large \textbf{Geometria e Topologia}} \\[0.4em]
+    {\large Segunda Unidade} \\[0.4em]
+    \textbf{Nome:} Pedro Barros \quad | \quad \textbf{Data:} \today
+\end{center}
+
+\hrule
+\vspace{1.5em}
+
+% --- Content ---
+\begin{problem}{1}
+    Prove que um espaço que é conexo e localmente conexo por caminhos é localmente conexo.\\
+    (Sugestão: Considere o conjunto dos pontosque se ligam por um caminho a um ponto por um caminho a um ponto fixo, e prove que esse conjunto é aberto e fechado)
+\end{problem}
+
+\begin{problem}{2}
+    Verifique que homotopia é uma relação de equivalência.
+\end{problem}
+
+\begin{problem}{3} 
+    Prove que a definição de produto é compativel com a relação de equivalência, isto é:
+    \[
+        f_0 \sim  f_1, \ g_0\sim g_1 \implies f_0g_0 \sim  f_1g_1
+    \]
+\end{problem}
+
+\end{document}

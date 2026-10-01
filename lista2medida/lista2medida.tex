@@ -44,17 +44,17 @@
 \begin{solution}{1}
     Seja $\lambda(E)=\mu(A\cap E)$, para todo $E\in\mathcal{A}$. Verifiquemos que $\lambda$ é uma medida.
 
-    \textbf{Axioma 1:} Como $A\cap\varnothing=\varnothing$,
-    \[
-        \lambda(\varnothing)=\mu(A\cap\varnothing)=\mu(\varnothing)=0.
-    \]
-
-    \textbf{Axioma 2:} Para todo $E\in\mathcal{A}$, temos $A\cap E\in\mathcal{A}$. Logo,
+    \textbf{Axioma 1:} Para todo $E\in\mathcal{A}$, temos $A\cap E\in\mathcal{A}$. Logo,
     \[
         \lambda(E)=\mu(A\cap E)\geq 0.
     \]
 
-    \textbf{Axioma 3:} Se $(E_n)_{n\geq1}\subseteq\mathcal{A}$ é uma família dois a dois disjunta, então os conjuntos $A\cap E_n$ também são dois a dois disjuntos e
+    \textbf{Axioma 2:} Como $A\cap\varnothing=\varnothing$,
+    \[
+        \lambda(\varnothing)=\mu(A\cap\varnothing)=\mu(\varnothing)=0.
+    \]    
+
+    \textbf{Axioma 3:} Se $(E_n)\subseteq\mathcal{A}$ é uma família de conjuntos dois a dois disjuntos, então os conjuntos $A\cap E_n$ também são dois a dois disjuntos e
     \[
         A\cap\biggl(\bigcup_{n=1}^{\infty}E_n\biggr)
         =\bigcup_{n=1}^{\infty}(A\cap E_n).
@@ -63,10 +63,35 @@
     \[
         \lambda\biggl(\bigcup_{n=1}^{\infty}E_n\biggr)
         =\mu\biggl(A\cap\bigcup_{n=1}^{\infty}E_n\biggr)
+        =\mu\biggl(\bigcup_{n=1}^{\infty}(A \cap E_n)\biggr)
         =\sum_{n=1}^{\infty}\mu(A\cap E_n)
         =\sum_{n=1}^{\infty}\lambda(E_n).
     \]
     Portanto, $\lambda$ é uma medida em $(X,\mathcal{A})$.
+\end{solution}
+
+\begin{solution}{2}
+    Novamente, verificamos os axiomas de medida para $\lambda(E) = \sum_{i=1}^{\infty}a_i \mu_i(E)$.
+
+    \textbf{Axioma 1:} Para todo $E\in\mathcal{A}$, temos $\mu_i(E)\geq 0$ para todo $i$. Como $a_i\geq 0$ para todo $i$, segue que
+    \[
+        \lambda(E)=\sum_{i=1}^{\infty} a_i \mu_i(E) \geq 0.
+    \]
+
+    \textbf{Axioma 2:} Como $\mu_i(\varnothing)=0$ para todo $i$, temos
+    \[
+        \lambda(\varnothing) = \sum_{i=1}^{\infty} a_i \mu_i(\varnothing) = \sum_{i=1}^{\infty} a_i \cdot 0 = 0.
+    \]
+
+    \textbf{Axioma 3:} Se $(E_n)\subseteq\mathcal{A}$ é uma família de conjuntos dois a dois disjuntos, então, pela $\sigma$-aditividade de cada $\mu_i$,
+    \[
+        \mu_i\biggl(\bigcup_{n=1}^{\infty} E_n\biggr) = \sum_{n=1}^{\infty} \mu_i(E_n)
+    \]
+    Logo, para $\lambda$ temos:
+    \[
+        \lambda\biggl(\bigcup_{n=1}^{\infty} E_n\biggr) = \sum_{i=1}^{\infty}\sum_{n=1}^{\infty} \mu_i(E_n)
+    \]
+
 \end{solution}
 
 \end{document}
