@@ -9,6 +9,7 @@
 
 % --- Math & Symbols ---
 \usepackage{amsmath, amssymb, amsthm}
+%\usepackage{lmodern}
 
 % --- Built-in Header/Footer Control (No fancyhdr needed) ---
 % Uses standard LaTeX page styles or lightweight native commands
@@ -89,8 +90,16 @@
     \]
     Logo, para $\lambda$ temos:
     \[
-        \lambda\biggl(\bigcup_{n=1}^{\infty} E_n\biggr) = \sum_{i=1}^{\infty}\sum_{n=1}^{\infty} \mu_i(E_n)
+        \lambda\biggl(\bigcup_{n=1}^{\infty} E_n\biggr) = \sum_{i=1}^{\infty}a_i\mu_i \biggl(\bigcup_{n=1}^{\infty} E_n\biggr) = \sum_{i=1}^{\infty}a_i \sum_{j=1}^{\infty}\mu_i(E_n)
     \]
+    Como cada termo na soma é não-negativo, os indices podem ser trocados e temos:
+    \[
+        \lambda\biggl(\bigcup_{n=1}^{\infty}E_n\biggr) = \sum_{n=1}^{\infty}\sum_{i=1}^{\infty}a_i\mu_i(E_n) = \sum_{n=1}^{\infty}\lambda(E_n)
+    \] 
+
+\end{solution}
+
+\begin{solution}{3}
 
 \end{solution}
 
